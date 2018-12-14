@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html>
+<title>CaSP</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+body, html {
+    height: 100%;
+    line-height: 1.8;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] , input[type =email],input[type = number] ,input[type = telephone]{
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* Add a background color when the inputs get focus */
+input[type=text]:focus, input[type=password]:focus,input[type=email]:focus, input[type=number]:focus, input[type=telephone]:focus  {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 100%;
+}
+
+/* Add padding to container elements */
+.container {
+  padding: 16px;
+  background-image:url(signup.jpg);
+  background: rgba(0,0,0,0.2)
+  height: 100%
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: #474e5d;
+  padding-top: 50px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* Style the horizontal ruler */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* The Close Button (x) */
+.close {
+    position: absolute;
+    margin-top: 20px;
+    right: 35px;
+    top: 15px;
+    font-size: 80px;
+    font-weight: bold;
+    color: #f1f1f1;
+}
+
+.close:hover,.close:focus {
+    color: #f44336;
+    cursor: pointer;
+}
+
+/* Clear floats */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .signupbtn {
+    width: 100%;
+  }
+}
+/* Full height image header */
+.bgimg-1 {
+    background-position: center;
+    background-size: cover;
+    background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfi-c4uiFgS6P7g88bm2na3trFGW9oo8tfgJ32U5MI-yyraYP5");
+    min-height: 100%;
+}
+.w3-bar .w3-button {
+    padding: 16px;
+}
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+#f1_container {
+  position: relative;
+  margin: 10px auto;
+  width: 450px;
+  height: 281px;
+  z-index: 1;
+}
+#f1_container {
+  perspective: 1000;
+}
+#f1_card {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: all 1.0s linear;
+}
+#f1_container:hover #f1_card {
+  transform: rotateY(180deg);
+  box-shadow: -5px 5px 5px #aaa;
+}
+.face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+.face.back {
+  display: block;
+  transform: rotateY(180deg);
+  box-sizing: border-box;
+  padding: 10px;
+  color: white;
+  text-align: center;
+  background-color: #aaa;
+}
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+
+</style>
+<body>
+<div id="myNav" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <div class="overlay-content">
+    <a href="{% url 'music:index'%}">AbOuT</a>
+    <a href="{% url 'music:login'%}">lOgIn</a>
+    <a href="#">AllOtmEnt</a>
+    <a href="{% url 'music:index'%}">cOnTacT</a>
+  </div>
+</div>
+<div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+  <form class="modal-content" action="">
+    <div class="container">
+      <h1>Register Yourself</h1>
+      <p>Please fill in this form to create an account.</p>
+      <p><h4>Your name will act as your username too.</h4></p>
+
+      <hr>
+      <label for="u_name"><b>Name</b></label>
+      <input type="text" placeholder="Enter Name" name="u_name" required>
+
+      <label for="reg_no"><b> Registration Number</b></label>
+      <input type="number" placeholder="Enter Registration / Uid Number" name="reg_no" required>
+
+      <label for="specs"><b>Specialization</b></label>
+      <input type="text" placeholder="Enter Specialization" name="specs" required>
+
+      <label for="email"><b>Email</b></label>
+      <input type="email" placeholder="Enter Email" name="email" required>
+
+      <label for="mob_no"><b>Mobile Number</b></label>
+      <input type="number" placeholder="Enter Mobile Number" name="mob_no" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+
+      <label for="conf_psw"><b>Confirm Password</b></label>
+      <input type="password" placeholder="Confirm Password" name="conf_psw" required>
+
+      <label>
+        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+      </label>
+
+      <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+      <div class="clearfix">
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-black w3-padding-large">Cancel</button>
+        <button type="submit" class="w3-button w3-black w3-padding-large">Register</button>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-card" id="myNavbar">
+    <a href="#home" class="w3-bar-item w3-button w3-wide" onclick="openNav();return false;">CsAP</a>
+    <!-- Right-sided navbar links -->
+    <div class="w3-right w3-hide-small">
+      <a href="#about" class="w3-bar-item w3-button">ABOUT</a>
+      <a href="{% url 'music:signup' %}" class="w3-bar-item w3-button"><i class="fa fa-user"></i> STUDENT</a>
+      <a href="{% url 'music:sv_signup' %}" class="w3-bar-item w3-button"><i class="fa fa-th"></i> SUPERVISOR </a>
+      <a href="{% url 'music:login' %}" class="w3-bar-item w3-button"><i class="fa fa-usd"></i> ALLOTMENT</a>
+      <a href="#contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i>CONTACT</a>
+    </div>
+    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+
+
+
+<!-- Header with full-height image -->
+<header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-left w3-text-white" style="padding:48px">
+    <span class="w3-jumbo w3-hide-small">Built something that worth making..</span><br>
+    <span class="w3-xxlarge w3-hide-large w3-hide-medium">Built something that worth making..</span><br>
+    <span class="w3-large">Stop wasting valuable time with projects that just isn't you.</span>
+    <p><a href="#about" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">Start and Explore</a></p>
+  </div>
+  <div class="w3-display-bottomleft w3-text-grey w3-large" style="padding:24px 48px">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+</header>
+
+<!-- About Section -->
+<div class="w3-container" style="padding:128px 16px" id="about">
+  <h3 class="w3-center">ABOUT THE CsAP</h3>
+  <p class="w3-center w3-large">Capstone Supervisor Allocation Portal</p>
+  <div class="w3-row-padding w3-center" style="margin-top:64px">
+    <div class="w3-quarter">
+      <i class="fa fa-desktop w3-margin-bottom w3-jumbo w3-center"></i>
+      <p class="w3-large">AllOtMenT</p>
+      <p>In CsAP we provide students a guide , mentor or a friend in say a SUPERVISOR. who can help them to create their vision into practice.</p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-heart w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">STudEntS</p>
+      <p>CsAP help students to form their groups by their own for capstone project.They can also provide their choice for supervisor ,that will be considered at the time of allocating the supervisor.</p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-diamond w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">LOgIn aNd SIgnUp</p>
+      <p> In CsAP there will be login and signup page for both supervisors as well as students. </p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-cog w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Support</p>
+      <p>For any query or help you can contact to us 24*7.Details are available on our contact us section.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Promo Section - "We know design" -->
+<div class="w3-container w3-light-grey" style="padding:128px 16px">
+  <div class="w3-row-padding">
+    <div class="w3-col m6">
+      <h3>We know what you have to prepare.</h3>
+      <p>For your help we have given below an sample.<br>how to prepare a valuable product in your project</p>
+      <p><a href="https://drive.google.com/open?id=1UzD_GFbOtovA9EDEJnXp811MAq3K_9yL" class="w3-button w3-black"><i class="fa fa-th"> </i> View Our Sample</a></p>
+    </div>
+    <div class="w3-col m6">
+      <img class="w3-image w3-round-large" src="https://ak1.picdn.net/shutterstock/videos/14971621/thumb/1.jpg" alt="Buildings" width="700" height="394">
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Promo Section "Statistics" -->
+<div class="w3-container w3-row w3-center w3-dark-grey w3-padding-64">
+  <div class="w3-quarter">
+    <span class="w3-xxlarge">99+</span>
+    <br>CaPstoNe PrOjeCts
+  </div>
+  <div class="w3-quarter">
+    <span class="w3-xxlarge">2000+</span>
+    <br>StuDenTs EnrOLLed
+  </div>
+  <div class="w3-quarter">
+    <span class="w3-xxlarge">250+</span>
+    <br>SUperViSors
+  </div>
+  <div class="w3-quarter">
+    <span class="w3-xxlarge">100+</span>
+    <br>Evaluators
+  </div>
+</div>
+
+<!-- Work Section -->
+<div class="w3-container" style="padding:128px 16px" id="work">
+  <h3 class="w3-center">OUR WORK</h3>
+  <p class="w3-center w3-large">What we've have for Students</p>
+
+  <div class="w3-row-padding" style="margin-top:64px">
+    <div class="w3-col l3 m6">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFUHp_4qzLhdjxjqxZiDJyX4nt7uRUYWJMfCBr9kHW5sgAXgZz" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Advisor">
+    </div>
+    <div class="w3-col l3 m6">
+      <img src="http://markprichard.co.uk//content/images/_singleImage1200/guidance-mouse-pointer-700x525.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A phone">
+    </div>
+    <div class="w3-col l3 m6">
+      <img src="https://www.exclusivelybeauty.com.au/wp-content/uploads/2017/03/free-sample.gif" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A drone">
+    </div>
+    <div class="w3-col l3 m6">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPcNQBeatojqvAloVb0XYhAxoB56IRc6Lk4IIG4NTweel31Mmu" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Soundbox">
+    </div>
+  </div>
+
+
+<!-- Modal for full size images on click-->
+<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
+  <span class="w3-button w3-xxlarge w3-black w3-padding-large w3-display-topright" title="Close Modal Image">×</span>
+  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+    <img id="img01" class="w3-image">
+    <p id="caption" class="w3-opacity w3-large"></p>
+  </div>
+</div>
+
+<!-- Skills Section -->
+<div class="w3-container w3-light-grey w3-padding-64">
+  <div class="w3-row-padding">
+    <div class="w3-col m6">
+      <h3>What do you need ?</h3>
+      <p>All you required are some skills like leadership ,technical, soft and more.</p>
+      <p>Creative thinking is the only thing which can stand you alone from crowd.</p>
+    </div>
+    <div class="w3-col m6">
+      <p class="w3-wide"><i class="fa fa-camera w3-margin-right"></i>Leadership</p>
+      <div class="w3-grey">
+        <div class="w3-container w3-dark-grey w3-center" style="width:80%">80%</div>
+      </div>
+      <p class="w3-wide"><i class="fa fa-desktop w3-margin-right"></i>Technical Skills</p>
+      <div class="w3-grey">
+        <div class="w3-container w3-dark-grey w3-center" style="width:85%">85%</div>
+      </div>
+      <p class="w3-wide"><i class="fa fa-photo w3-margin-right"></i>Creative Thinking</p>
+      <div class="w3-grey">
+        <div class="w3-container w3-dark-grey w3-center" style="width:100%">100%</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Pricing Section -->
+<div class="w3-container w3-center w3-dark-grey" style="padding:128px 16px" id="pricing">
+  <h3>ALLOTMENT</h3>
+  <p class="w3-large">Choose a particular plans that suits you requirement</p>
+  <div class="w3-row-padding" style="margin-top:64px">
+    <div class="w3-third w3-section">
+      <ul class="w3-ul w3-white w3-hover-shadow">
+        <li class="w3-black w3-xlarge w3-padding-32">NEW STUDENT</li>
+        <li class="w3-padding-16"><b></b> Select Team members</li>
+        <li class="w3-padding-16"><b></b> Allocate Supervisor</li>
+        <li class="w3-padding-16"><b></b> Team Domains</li>
+        <li class="w3-padding-16"><b>Endless</b> Support</li>
+               <li class="w3-light-grey w3-padding-24">
+          <button class="w3-button w3-black w3-padding-large" onclick="location.href = '{% url "music:signup" %}'">Sign Up</button>
+          </li>
+      </ul>
+    </div>
+    <div class="w3-third">
+      <ul class="w3-ul w3-white w3-hover-shadow">
+        <li class="w3-red w3-xlarge w3-padding-48">NEW USER <br>SUPERVISOR</br></li>
+        <li class="w3-padding-16"><b></b> Students Prefrence</li>
+        <li class="w3-padding-16"><b></b> Allocate Projects</li>
+        <li class="w3-padding-16"><b></b> Team Domains</li>
+        <li class="w3-padding-16"><b>Endless</b> Support</li>
+                <li class="w3-light-grey w3-padding-24">
+          <button onclick="location.href = '{% url "music:sv_signup" %}'" class="w3-button w3-black w3-padding-large">Sign Up</button>
+        </li>
+      </ul>
+    </div>
+    <div class="w3-third w3-section">
+      <ul class="w3-ul w3-white w3-hover-shadow">
+        <li class="w3-black w3-xlarge w3-padding-32">REQUEST FOR SUPERVISOR</li>
+        <li class="w3-padding-16"><b></b> Details stored</li>
+        <li class="w3-padding-16"><b></b>Prefrence of students</li>
+        <li class="w3-padding-16"><b></b> Team Domains</li>
+        <li class="w3-padding-16"><b>Endless</b> Support</li>
+
+        <li class="w3-light-grey w3-padding-24">
+           <button class="w3-button w3-black w3-padding-large" onclick="location.href = '{% url "music:login" %}'">Sign Up</button>
+          </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="w3-container" style="padding:128px 16px" id="team">
+  <h3 class="w3-center">THE TEAM</h3>
+  <p class="w3-center w3-large">The ones who runs this website</p>
+  <div class="w3-row-padding w3-grayscale" style="margin-top:64 px">
+    <div class="w3-col l3 m6 w3-margin-bottom" style="margin-left:70px;">
+      <div class="w3-card">
+        <img src="../../static/music/vaibhav.jpg" alt="vaibhav" style="width:100%;">
+        <div class="w3-container">
+          <h3>Vaibhav Pareek</h3>
+          <p class="w3-opacity">Developer and Tester</p>
+          <p>He has managed the frontend and testing part of this website . In testing evaluating the website in terms of security as well as user experience. </p>
+          <p><button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button></p>
+        </div>
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom"style="margin-left:78px;" >
+      <div class="w3-card">
+        <img src="../../static/music/aalap.jpeg" alt="aalap" style="width:100%">
+        <div class="w3-container">
+          <h3>Aalap Singh Rawat</h3>
+          <p class="w3-opacity">Backend Developer and Coder</p>
+          <p>He has developed the main module of backend . Specifically he has developed the module to store the details of supervisors and users.</p>
+          <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button></p>
+        </div>
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom" style="margin-left:78px;">
+      <div class="w3-card">
+        <img src="../../static/music/nikhil.jpeg" alt="nikhil" style="width:100%">
+        <div class="w3-container">
+          <h3>Nikhil Singh Parihar</h3>
+          <p class="w3-opacity">Coder and Web designer</p>
+          <p>He has developed the login page and signup page for this website including connecting these pages with backend technologies . </p>
+          <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button></p>
+        </div>
+      </div>
+    </div>
+<!-- Contact Section -->
+<div class="w3-container w3-light-grey" style="padding:128px 16px" id="contact">
+  <h3 class="w3-center">CONTACT</h3>
+  <p class="w3-center w3-large">Lets get in touch. Send us a message:</p>
+  <div class="w3-row-padding" style="margin-top:64px">
+    <div class="w3-half">
+      <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i> Jalandhar, Punjab</p>
+      <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> Phone: +91-9694330840</p>
+      <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> Email: csapofficial@gmail.com</p>
+      <br>
+      <form action="/action_page.php" target="_blank">
+        <p><input class="w3-input w3-border" type="text" placeholder="Name" required name="Name"></p>
+        <p><input class="w3-input w3-border" type="text" placeholder="Email" required name="Email"></p>
+        <p><input class="w3-input w3-border" type="text" placeholder="Subject" required name="Subject"></p>
+        <p><input class="w3-input w3-border" type="text" placeholder="Message" required name="Message"></p>
+        <p>
+          <button class="w3-button w3-black" type="submit">
+            <i class="fa fa-paper-plane"></i> SEND MESSAGE
+          </button>
+        </p>
+      </form>
+    </div>
+    <div class="w3-half">
+      <!-- Add Google Maps -->
+      <div id="googleMap" class="w3-greyscale-max" style="width:100%;height:510px;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64">
+  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To The Top</a>
+  <div class="w3-xlarge w3-section">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+ </footer>
+
+<!-- Add Google Maps -->
+<script>
+function myMap()
+{
+  myCenter=new google.maps.LatLng(41.878114, -87.629798);
+  var mapOptions= {
+    center:myCenter,
+    zoom:12, scrollwheel: false, draggable: false,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  var map=new google.maps.Map(document.getElementById("googleMap"),mapOptions);
+
+  var marker = new google.maps.Marker({
+    position: myCenter,
+  });
+  marker.setMap(map);
+}
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+
+// Toggle between showing and hiding the sidebar when clicking the menu icon
+var mySidebar = document.getElementById("mySidebar");
+
+function w3_open() {
+    if (mySidebar.style.display === 'block') {
+        mySidebar.style.display = 'none';
+    } else {
+        mySidebar.style.display = 'block';
+    }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+    mySidebar.style.display = "none";
+}
+//to call the function
+function openNav() {
+  document.getElementById("myNav").style.width = "100%";
+}
+// close the function
+function closeNav() {
+  document.getElementById("myNav").style.width = "0%";
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
+<!--
+To use this code on your website, get a free API key from Google.
+Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+-->
+
+</body>
+</html>
